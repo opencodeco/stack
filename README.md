@@ -37,7 +37,7 @@ docker-compose -d mysql/docker-compose.yml up -d
 ```
 Behind the scenes.
 
-**Which means: you can combine any other valid Docker Compose command**
+#### Which means you can combine any other valid Docker Compose command
 
 Like:
 ```shell
