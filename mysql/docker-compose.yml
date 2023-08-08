@@ -14,7 +14,7 @@ services:
     container_name: opencodeco-phpmyadmin
     image: phpmyadmin:5.2
     ports:
-      - 127.0.0.1:3380:80
+      - 127.0.0.1:8031:80
     environment:
       - PMA_HOST=opencodeco-mysql
       

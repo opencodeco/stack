@@ -54,8 +54,8 @@ Here is a list of components:
 
 | Component | Description |
 | --- | --- |
-| `./stack mysql`| MySQL & phpMyAdmin (http://localhost:3380) |
-| `./stack redis` | Redis & RedisInsight (http://localhost:6380) |
+| `./stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
+| `./stack redis` | Redis & RedisInsight (http://localhost:8032) |
 
 ---
 

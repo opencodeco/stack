@@ -10,7 +10,7 @@ services:
     container_name: opencodeco-redisinsight
     image: redislabs/redisinsight:1.14.0
     ports:
-      - 127.0.0.1:6380:8001
+      - 127.0.0.1:8032:8001
       
 networks:
   default:
