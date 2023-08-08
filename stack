@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+CMD=$1
+
+if [ ! -d $CMD ]; then
+    echo "\033[0;31mWhoops! Component \"$CMD\" does not exists." >&2
+    exit 1
+fi
+
+SUBCMD=${@:2}
+docker-compose -f $CMD/docker-compose.yml ${SUBCMD:-up -d}
