@@ -1,0 +1,28 @@
+version: '3'
+services:
+  opencodeco-mongo:
+    container_name: opencodeco-mongo
+    image: mongo:6.0
+    ports:
+      - 127.0.0.1:27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: opencodeco
+    volumes:
+      - opencodeco-mongo:/data/db
+      
+  opencodeco-mongoexpress:
+    container_name: opencodeco-mongoexpress
+    image: mongo-express:1.0.0-alpha
+    ports:
+      - 127.0.0.1:8033:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://root:opencodeco@opencodeco-mongo:27017/
+
+networks:
+  default:
+    name: opencodeco
+    external: true
+
+volumes:
+  opencodeco-mongo:

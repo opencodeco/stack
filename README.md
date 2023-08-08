@@ -56,6 +56,7 @@ Here is a list of components:
 | --- | --- |
 | `./stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
 | `./stack redis` | Redis & RedisInsight (http://localhost:8032) |
+| `./stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
 
 ---
 
