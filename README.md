@@ -55,3 +55,7 @@ Here is a list of components:
 | Component | Description |
 | --- | --- |
 | `./stack mysql`| MySQL & phpMyAdmin (http://localhost:3380) |
+
+---
+
+⚠️ **Remember:** this is suited for development environments only.
