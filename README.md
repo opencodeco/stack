@@ -48,3 +48,10 @@ Or:
 ```shell
 ./stack mysql logs -f
 ```
+
+### Components
+Here is a list of components:
+
+| Component | Description |
+| --- | --- |
+| `mysql`| MySQL & phpMyAdmin |
