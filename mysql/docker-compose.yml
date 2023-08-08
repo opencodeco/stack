@@ -1,0 +1,20 @@
+version: '3'
+services:
+  opencodeco-mysql:
+    container_name: opencodeco-mysql
+    image: mysql:8.1
+    ports:
+      - 127.0.0.1:3306:3306
+    networks:
+      - opencodeco
+    environment:
+      MYSQL_ROOT_PASSWORD: opencodeco
+    volumes:
+      - opencodeco-mysql:/var/lib/mysql
+
+networks:
+  opencodeco:
+    external: true
+      
+volumes:
+  opencodeco-mysql:
