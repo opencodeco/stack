@@ -54,4 +54,4 @@ Here is a list of components:
 
 | Component | Description |
 | --- | --- |
-| `mysql`| MySQL & phpMyAdmin |
+| `./stack mysql`| MySQL & phpMyAdmin |
