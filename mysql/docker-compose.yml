@@ -5,15 +5,22 @@ services:
     image: mysql:8.1
     ports:
       - 127.0.0.1:3306:3306
-    networks:
-      - opencodeco
     environment:
       MYSQL_ROOT_PASSWORD: opencodeco
     volumes:
       - opencodeco-mysql:/var/lib/mysql
 
+  opencodeco-phpmyadmin:
+    container_name: opencodeco-phpmyadmin
+    image: phpmyadmin:5.2
+    ports:
+      - 127.0.0.1:3380:80
+    environment:
+      - PMA_HOST=opencodeco-mysql
+      
 networks:
-  opencodeco:
+  default:
+    name: opencodeco
     external: true
       
 volumes:
