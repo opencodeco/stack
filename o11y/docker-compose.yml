@@ -1,0 +1,38 @@
+version: '3'
+services:      
+  opencodeco-otelcol:
+    container_name: opencodeco-otelcol
+    image: otel/opentelemetry-collector-contrib:0.82.0
+    volumes:
+    - ./otelcol-config.yml:/etc/otelcol-contrib/config.yaml
+
+  opencodeco-jaeger:
+    container_name: opencodeco-jaeger
+    image: jaegertracing/all-in-one:1.47
+    ports:
+    - 127.0.0.1:8034:16686
+
+  opencodeco-prometheus:
+    container_name: opencodeco-prometheus
+    image: prom/prometheus:v2.46.0
+    volumes:
+    - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+    - 127.0.0.1:8035:9090
+
+  opencodeco-grafana:
+    container_name: opencodeco-grafana
+    image: grafana/grafana:10.0.3
+    ports:
+    - 127.0.0.1:8036:3000
+    volumes:
+    - ./grafana.yml:/etc/grafana/provisioning/datasources/datasource.yml
+    environment:
+    - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    - GF_AUTH_ANONYMOUS_ENABLED=true
+    - GF_AUTH_BASIC_ENABLED=false
+
+networks:
+  default:
+    name: opencodeco
+    external: true

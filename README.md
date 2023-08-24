@@ -57,6 +57,19 @@ Here is a list of components:
 | `./stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
 | `./stack redis` | Redis & RedisInsight (http://localhost:8032) |
 | `./stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
+| `./stack o11y` | OpenTemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
+
+#### Observability (o11y)
+
+| Component | Description | Port |
+| --- | --- | --- |
+| OpenTelemetry Collector | Jaeger HTTP | `14268` |
+| OpenTelemetry Collector | Statsd UDP | `8125` |
+| OpenTelemetry Collector | OTLP gRPC | `4317` |
+| OpenTelemetry Collector | OTLP HTTP | `4318` |
+| Jaeger UI | Traces | http://localhost:8034 |
+| Prometheus | Metrics | http://localhost:8035 |
+| Grafana | Dashboards & Alerts | http://localhost:8036 | 
 
 ---
 

@@ -1,0 +1,29 @@
+receivers:
+  jaeger:
+    protocols:
+      thrift_http:
+  statsd:
+    endpoint: 0.0.0.0:8125
+    is_monotonic_counter: true
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  logging:
+  jaeger:
+    endpoint: opencodeco-jaeger:14250
+    tls:
+      insecure: true
+  prometheus:
+    endpoint: 0.0.0.0:9090
+
+service:
+  pipelines:
+    traces:
+      receivers: [jaeger]
+      exporters: [logging, jaeger]
+    metrics:
+      receivers: [statsd]
+      exporters: [logging, prometheus]
