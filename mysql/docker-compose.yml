@@ -3,6 +3,7 @@ services:
   opencodeco-mysql:
     container_name: opencodeco-mysql
     image: mysql:8.1
+    command: --default-authentication-plugin=mysql_native_password
     ports:
       - 127.0.0.1:3306:3306
     environment:
@@ -25,3 +26,4 @@ networks:
       
 volumes:
   opencodeco-mysql:
+    name: opencodeco-mysql

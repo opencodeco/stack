@@ -18,7 +18,9 @@ services:
       - 127.0.0.1:8033:8081
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://root:opencodeco@opencodeco-mongo:27017/
-
+    depends_on:
+      - opencodeco-mongo
+      
 networks:
   default:
     name: opencodeco
@@ -26,3 +28,4 @@ networks:
 
 volumes:
   opencodeco-mongo:
+    name: opencodeco-mongo
