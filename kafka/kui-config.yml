@@ -1,0 +1,11 @@
+auth:
+  type: DISABLED
+kafka:
+  clusters:
+  - bootstrapServers: opencodeco-kafka:9092
+    name: opencodeco-kafka
+    properties: {}
+    readOnly: false
+rbac:
+  roles: []
+webclient: {}

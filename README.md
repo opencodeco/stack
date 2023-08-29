@@ -9,6 +9,7 @@
 | `stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
 | `stack redis` | Redis & RedisInsight (http://localhost:8032) |
 | `stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
+| `stack kafka` | Kafka and UI for Apache Kafka (http://localhost:8037) |
 | `stack o11y` | OpenTelemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
 
 ### Observability (o11y)
