@@ -45,7 +45,7 @@ The `<docker compose command>` defaults to `up -d`, so:
 ```shell
 stack mysql
 ```
-Will be same as:
+Will be the same as:
 ```shell
 stack mysql up -d
 ```
