@@ -6,10 +6,10 @@
 
 | Component | Description |
 | --- | --- |
-| `./stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
-| `./stack redis` | Redis & RedisInsight (http://localhost:8032) |
-| `./stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
-| `./stack o11y` | OpenTelemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
+| `stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
+| `stack redis` | Redis & RedisInsight (http://localhost:8032) |
+| `stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
+| `stack o11y` | OpenTelemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
 
 ### Observability (o11y)
 
@@ -31,26 +31,22 @@ Just clone this repository:
 ```shell
 git clone https://github.com/opencodeco/stack.git
 cd stack
-```
-
-Then make sure you have a network named `opencodeco`. You can do this by:
-```shell
-docker network create opencodeco
+make install
 ```
 
 ### Usage
 You can use the built-in Shell Script helper:
 ```shell
-./stack <component> <docker compose command>
+stack <component> <docker compose command>
 ```
 
 The `<docker compose command>` defaults to `up -d`, so:
 ```shell
-./stack mysql
+stack mysql
 ```
 Will be same as:
 ```shell
-./stack mysql up -d
+stack mysql up -d
 ```
 Which does a:
 ```shell
@@ -62,12 +58,12 @@ Behind the scenes.
 
 Like:
 ```shell
-./stack mysql down
+stack mysql down
 ```
 
 Or:
 ```shell
-./stack mysql logs -f
+stack mysql logs -f
 ```
 
 ---

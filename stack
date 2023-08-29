@@ -1,10 +1,31 @@
 #!/usr/bin/env sh
-CMD=$1
+STACK_PATH=$(pwd)
 
-if [ ! -d $CMD ]; then
-    echo "\033[0;31mWhoops! Component \"$CMD\" does not exists." >&2
+if [ "path" = $1 ]; then
+    echo $STACK_PATH
+    exit
+fi
+
+if [ "network" = $1 ]; then
+    NET=$(docker network ls | grep opencodeco)
+
+    if [ -z "$NET" ]; then
+	echo "OpenCodeCo network not found. Creating one..."
+	docker network create opencodeco
+	echo "🕸️ Done!"
+    else
+	echo "🕸️ OpenCodeCo network already exists!"
+    fi
+    
+    exit
+fi
+
+COMPONENT=$STACK_PATH/$1
+
+if [ ! -d $COMPONENT ]; then
+    echo "\033[0;31mWhoops! Component \"$COMPONENT\" does not exists." >&2
     exit 1
 fi
 
-SUBCMD=${@:2}
-docker-compose -f $CMD/docker-compose.yml ${SUBCMD:-up -d}
+CMD=${@:2}
+docker-compose -f $COMPONENT/docker-compose.yml ${CMD:-up -d}
