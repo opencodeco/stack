@@ -1,0 +1,12 @@
+version: '3'
+services:
+  opencodeco-aws:
+    container_name: opencodeco-aws
+    image: localstack/localstack:2.2.0
+    ports:
+      - 127.0.0.1:4566:4566
+
+networks:
+  default:
+    name: opencodeco
+    external: true
