@@ -4,7 +4,7 @@ services:
     container_name: opencodeco-kafka
     image: bitnami/kafka:3.5
     ports:
-      - 127.0.0.1:9092:9092
+      - ${KAFKA_PORT}:9092
     volumes:
       - opencodeco-kafka:/bitnami
     environment:
@@ -19,7 +19,7 @@ services:
     container_name: opencodeco-kafka-ui
     image: provectuslabs/kafka-ui:latest
     ports:
-      - 127.0.0.1:8037:8080
+      - ${KAFKA_UI_PORT}:8080
     depends_on:
       - opencodeco-kafka
     environment:

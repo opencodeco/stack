@@ -4,7 +4,7 @@ services:
     container_name: opencodeco-aws
     image: localstack/localstack:2.2.0
     ports:
-      - 127.0.0.1:4566:4566
+      - ${AWS_PORT}:4566
 
 networks:
   default:

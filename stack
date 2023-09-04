@@ -1,8 +1,20 @@
 #!/usr/bin/env sh
 STACK_PATH=$(pwd)
 
+set -ae
+
+source "$STACK_PATH/.env.dist"
+if [ -f "$STACK_PATH/.env" ]; then
+    source "$STACK_PATH/.env"
+fi
+
 if [ "path" = $1 ]; then
     echo $STACK_PATH
+    exit
+fi
+
+if [ "ps" = $1 ] || [ "ls" = $1 ]; then
+    docker ps | grep opencodeco
     exit
 fi
 

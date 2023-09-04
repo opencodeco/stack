@@ -10,7 +10,7 @@ services:
     container_name: opencodeco-jaeger
     image: jaegertracing/all-in-one:1.47
     ports:
-    - 127.0.0.1:8034:16686
+    - ${JAEGER_PORT}:16686
 
   opencodeco-prometheus:
     container_name: opencodeco-prometheus
@@ -18,13 +18,13 @@ services:
     volumes:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-    - 127.0.0.1:8035:9090
+    - ${PROMETHEUS_PORT}:9090
 
   opencodeco-grafana:
     container_name: opencodeco-grafana
     image: grafana/grafana:10.0.3
     ports:
-    - 127.0.0.1:8036:3000
+    - ${GRAFANA_PORT}:3000
     volumes:
     - ./grafana.yml:/etc/grafana/provisioning/datasources/datasource.yml
     environment:
