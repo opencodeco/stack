@@ -25,7 +25,19 @@
 | Prometheus | Metrics | http://localhost:8035 |
 | Grafana | Dashboards & Alerts | http://localhost:8036 | 
 
+## Commands
+
+| Command | Description |
+| --- | --- |
+| `stack ls` or `stack ps` | List running containers |
+| `stack path` | Display where Stack is located |
+| `stack network` | Create the external `opencodeco` network |
+
 ## Getting started
+
+### Changing ports
+
+Whether to avoid conflicts or to set a port number that fits best for your enviroment, you can create a `.env` file at `stack path` and change port numbers based on `.env.dist`.
 
 ### Install
 
