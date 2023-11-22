@@ -5,12 +5,15 @@ services:
     image: otel/opentelemetry-collector-contrib:0.82.0
     volumes:
     - ./otelcol-config.yml:/etc/otelcol-contrib/config.yaml
+    ports:
+    - ${JAEGER_PORT}:14268
+    - ${STATSD_PORT}:8125/udp
 
   opencodeco-jaeger:
     container_name: opencodeco-jaeger
     image: jaegertracing/all-in-one:1.47
     ports:
-    - ${JAEGER_PORT}:16686
+    - ${JAEGER_UI_PORT}:16686
 
   opencodeco-prometheus:
     container_name: opencodeco-prometheus
