@@ -12,6 +12,7 @@ receivers:
 
 exporters:
   logging:
+    verbosity: detailed
   jaeger:
     endpoint: opencodeco-jaeger:14250
     tls:
@@ -20,6 +21,9 @@ exporters:
     endpoint: 0.0.0.0:9090
 
 service:
+  telemetry:
+    logs:
+      level: "debug"
   pipelines:
     traces:
       receivers: [jaeger]
