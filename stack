@@ -48,7 +48,6 @@ elif command -v podman > /dev/null 2>&1; then
     CONTAINER_BIN=podman
 else
     echo "Could not find neither \"docker\" nor \"podman\", aborting"
-
     exit 1
 fi
 
@@ -59,7 +58,6 @@ elif command -v podman-compose > /dev/null 2>&1; then
     CONTAINER_COMPOSE=podman-compose
 else
     echo "Could not find neither \"docker-compose\" nor \"podman-compose\", aborting"
-
     exit 1
 fi
 
