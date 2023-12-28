@@ -68,13 +68,18 @@ if [ "ps" = $1 ] || [ "ls" = $1 ]; then
     exit
 fi
 
-if [ "network" = $1 ]; then
-    NET=$($CONTAINER_BIN network ls | grep "opencodeco")
+if [ "network" = "${1}" ]; then
+    NET=$($CONTAINER_BIN network ls --filter name='^opencodeco$' --quiet)
 
     if [ -z "$NET" ]; then
-        echo "OpenCodeCo network not found. Creating one..."
-        $CONTAINER_BIN network create opencodeco
-        echo "🕸️ Done!"
+       echo "OpenCodeCo network not found. Creating one..."
+       if [ $($CONTAINER_BIN network create opencodeco) ]; then
+            echo "🕸️ Done!"
+        else
+            echo "🕸️ Failed to create OpenCodeCo network!"
+
+            exit 1
+       fi
     else
         echo "🕸️ OpenCodeCo network already exists!"
     fi
