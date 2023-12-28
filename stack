@@ -8,6 +8,30 @@ if [ -f "$STACK_PATH/.env" ]; then
     source "$STACK_PATH/.env"
 fi
 
+if [ "help" = "${1}" ]; then
+    echo "Usage: stack [component] <docker/podman compose command>"
+    echo ""
+    echo "Components:"
+    echo "  mysql    MySQL & phpMyAdmin            (http://localhost:${PHPMYADMIN_PORT})"
+    echo "  redis    Redis & RedisInsight          (http://localhost:${REDISINSIGHT_PORT})"
+    echo "  mongo    MongoDB & Mongo Express       (http://localhost:${MONGO_EXPRESS_PORT})"
+    echo "  kafka    Kafka and UI for Apache Kafka (http://localhost:${KAFKA_UI_PORT})"
+    echo "  aws      AWS services via LocalStack   (http://localhost:${AWS_PORT})"
+    echo "  o11y     OTel Collectors, Jaeger UI, Prometheus & Grafana"
+    echo ""
+    echo "Observability (o11y):"
+    echo "  OTel Collector: Jaeger HTTP (Port: ${JAEGER_PORT})"
+    echo "  OTel Collector: Statsd UDP  (Port: ${STATSD_PORT})"
+    echo "  OTel Collector: OTLP gRPC   (Port: 4317)"
+    echo "  OTel Collector: OTLP HTTP   (Port: 4318)"
+    echo "  Jaeger UI: Traces           (http://localhost:${JAEGER_UI_PORT})"
+    echo "  Prometheus: Metrics         (http://localhost:${PROMETHEUS_PORT})"
+    echo "  Grafana Dashboards & Alerts (http://localhost:${GRAFANA_PORT})"
+    echo ""
+
+    exit
+fi
+
 if [ "path" = $1 ]; then
     echo $STACK_PATH
     exit
