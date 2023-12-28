@@ -1,15 +1,20 @@
 #!/usr/bin/env sh
 STACK_PATH=$(pwd)
+PROJECT_PATH=$(pwd)
 
 set -ae
 
-source "$STACK_PATH/.env.dist"
-if [ -f "$STACK_PATH/.env" ]; then
-    source "$STACK_PATH/.env"
+. "${STACK_PATH}/.env.dist" # default settings
+if [ -f "${STACK_PATH}/.env" ]; then
+    . "${STACK_PATH}/.env" # custom *global* settings
+elif [ -f "${PROJECT_PATH}/.env" ]; then
+    . "${PROJECT_PATH}/.env" # custom *local* settings
 fi
 
-if [ "path" = $1 ]; then
-    echo $STACK_PATH
+if [ "path" = "${1}" ]; then
+    echo "Stack path: ${STACK_PATH}"
+    echo "Project path: ${PROJECT_PATH}"
+
     exit
 fi
 
