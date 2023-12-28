@@ -1,11 +1,14 @@
 #!/usr/bin/env sh
 STACK_PATH=$(pwd)
+PROJECT_PATH=$(pwd)
 
 set -ae
 
-source "$STACK_PATH/.env.dist"
-if [ -f "$STACK_PATH/.env" ]; then
-    source "$STACK_PATH/.env"
+. "${STACK_PATH}/.env.dist" # default settings
+if [ -f "${STACK_PATH}/.env" ]; then
+    . "${STACK_PATH}/.env" # custom *global* settings
+elif [ -f "${PROJECT_PATH}/.env" ]; then
+    . "${PROJECT_PATH}/.env" # custom *local* settings
 fi
 
 if [ "help" = "${1}" ]; then
@@ -32,18 +35,19 @@ if [ "help" = "${1}" ]; then
     exit
 fi
 
-if [ "path" = $1 ]; then
-    echo $STACK_PATH
+if [ "path" = "${1}" ]; then
+    echo "Stack path: ${STACK_PATH}"
+    echo "Project path: ${PROJECT_PATH}"
     exit
 fi
 
 if [ "ps" = $1 ] || [ "ls" = $1 ]; then
-    docker ps | grep opencodeco
+    docker ps | grep "opencodeco"
     exit
 fi
 
 if [ "network" = $1 ]; then
-    NET=$(docker network ls | grep opencodeco)
+    NET=$(docker network ls | grep "opencodeco")
 
     if [ -z "$NET" ]; then
 	echo "OpenCodeCo network not found. Creating one..."
