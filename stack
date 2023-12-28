@@ -41,22 +41,44 @@ if [ "path" = "${1}" ]; then
     exit
 fi
 
+CONTAINER_BIN=
+if command -v docker > /dev/null 2>&1; then
+    CONTAINER_BIN=docker
+elif command -v podman > /dev/null 2>&1; then
+    CONTAINER_BIN=podman
+else
+    echo "Could not find neither \"docker\" nor \"podman\", aborting"
+
+    exit 1
+fi
+
+CONTAINER_COMPOSE=
+if command -v docker-compose > /dev/null 2>&1; then
+    CONTAINER_COMPOSE=docker-compose
+elif command -v podman-compose > /dev/null 2>&1; then
+    CONTAINER_COMPOSE=podman-compose
+else
+    echo "Could not find neither \"docker-compose\" nor \"podman-compose\", aborting"
+
+    exit 1
+fi
+
 if [ "ps" = $1 ] || [ "ls" = $1 ]; then
-    docker ps | grep "opencodeco"
+    $CONTAINER_BIN ps | grep "opencodeco"
     exit
 fi
 
 if [ "network" = $1 ]; then
-    NET=$(docker network ls | grep "opencodeco")
+    NET=$($CONTAINER_BIN network ls | grep "opencodeco")
 
     if [ -z "$NET" ]; then
-	echo "OpenCodeCo network not found. Creating one..."
-	docker network create opencodeco
-	echo "🕸️ Done!"
+        echo "OpenCodeCo network not found. Creating one..."
+        $CONTAINER_BIN network create opencodeco
+        echo "🕸️ Done!"
     else
-	echo "🕸️ OpenCodeCo network already exists!"
+        echo "🕸️ OpenCodeCo network already exists!"
     fi
-    
+
     exit
 fi
 
@@ -68,4 +90,4 @@ if [ ! -d $COMPONENT ]; then
 fi
 
 CMD=${@:2}
-docker-compose -f $COMPONENT/docker-compose.yml ${CMD:-up -d}
+$CONTAINER_COMPOSE -f $COMPONENT/docker-compose.yml ${CMD:-up -d}
