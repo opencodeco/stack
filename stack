@@ -85,12 +85,19 @@ if [ "network" = "${1}" ]; then
     exit
 fi
 
-COMPONENT=$STACK_PATH/$1
+COMPONENT="${STACK_PATH}/${1}"
 
-if [ ! -d $COMPONENT ]; then
-    echo "\033[0;31mWhoops! Component \"$COMPONENT\" does not exists." >&2
+if [ ! -d "${COMPONENT}" ]; then
+    printf "\033[0;31mWhoops! Component \"%s\" does not exists.\033[0m\\n" "${COMPONENT}" >&2
+
+    exit 1
+fi
+
+if [ ! -f "${COMPONENT}/docker-compose.yml" ]; then
+    printf "\033[0;31mWhoops! Component \"%s\" does not define a \"docker-compose.yml\".\033[0m\\n" "${COMPONENT}" >&2
+
     exit 1
 fi
 
 CMD=${@:2}
-$CONTAINER_COMPOSE -f $COMPONENT/docker-compose.yml ${CMD:-up -d}
+$CONTAINER_COMPOSE -f "${COMPONENT}/docker-compose.yml" ${CMD:-up -d}
