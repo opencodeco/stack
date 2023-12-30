@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 STACK_PATH=$(pwd)
 PROJECT_PATH=$(pwd)
 
@@ -99,5 +99,5 @@ if [ ! -f "${COMPONENT}/docker-compose.yml" ]; then
     exit 1
 fi
 
-CMD=${@:2}
+CMD="${@:2}"
 $CONTAINER_COMPOSE -f "${COMPONENT}/docker-compose.yml" ${CMD:-up -d}
