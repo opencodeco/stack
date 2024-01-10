@@ -11,7 +11,7 @@ elif [ -f "${PROJECT_PATH}/.env" ]; then
     . "${PROJECT_PATH}/.env" # custom *local* settings
 fi
 
-if [ "help" = "${1}" ]; then
+if [ $# -eq 0 ] || [ "help" = "${1}" ]; then
     echo "Usage: stack [component] <docker/podman compose command>"
     echo ""
     echo "Components:"
@@ -19,6 +19,7 @@ if [ "help" = "${1}" ]; then
     echo "  redis    Redis & RedisInsight          (http://localhost:${REDISINSIGHT_PORT})"
     echo "  mongo    MongoDB & Mongo Express       (http://localhost:${MONGO_EXPRESS_PORT})"
     echo "  kafka    Kafka and UI for Apache Kafka (http://localhost:${KAFKA_UI_PORT})"
+    echo "  rabbitmq RabbitMQ & Management Plugin  (http://localhost:${RABBITMQ_UI_PORT})"
     echo "  aws      AWS services via LocalStack   (http://localhost:${AWS_PORT})"
     echo "  o11y     OTel Collectors, Jaeger UI, Prometheus & Grafana"
     echo ""
@@ -61,7 +62,7 @@ else
     exit 1
 fi
 
-if [ "ps" = $1 ] || [ "ls" = $1 ]; then
+if [ "ps" = "${1}" ] || [ "ls" = "${1}" ]; then
     $CONTAINER_BIN ps | grep "opencodeco"
     exit
 fi

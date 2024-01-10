@@ -10,6 +10,7 @@
 | `stack redis` | Redis & RedisInsight (http://localhost:8032) |
 | `stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
 | `stack kafka` | Kafka and UI for Apache Kafka (http://localhost:8037) |
+| `stack rabbitmq` | RabbitMQ & Management Plugin (http://localhost:8038) |
 | `stack aws` | AWS services via LocalStack (http://localhost:4566) |
 | `stack o11y` | OpenTelemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
 
@@ -23,7 +24,7 @@
 | OpenTelemetry Collector | OTLP HTTP | `4318` |
 | Jaeger UI | Traces | http://localhost:8034 |
 | Prometheus | Metrics | http://localhost:8035 |
-| Grafana | Dashboards & Alerts | http://localhost:8036 | 
+| Grafana | Dashboards & Alerts | http://localhost:8036 |
 
 ## Commands
 
