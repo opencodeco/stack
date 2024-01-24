@@ -1,0 +1,22 @@
+version: '3'
+services:
+  opencodeco-rabbitmq:
+    container_name: opencodeco-rabbitmq
+    image: rabbitmq:3-management-alpine
+    ports:
+      - ${RABBITMQ_PORT}:5672
+      - ${RABBITMQ_UI_PORT}:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: opencodeco
+      RABBITMQ_DEFAULT_PASS: opencodeco
+    volumes:
+      - opencodeco-rabbitmq:/var/lib/rabbitmq
+      
+networks:
+  default:
+    name: opencodeco
+    external: true
+      
+volumes:
+  opencodeco-rabbitmq:
+    name: opencodeco-rabbitmq
