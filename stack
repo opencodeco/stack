@@ -16,6 +16,7 @@ if [ $# -eq 0 ] || [ "help" = "${1}" ]; then
     echo ""
     echo "Components:"
     echo "  mysql    MySQL & phpMyAdmin            (http://localhost:${PHPMYADMIN_PORT})"
+    echo "  postgres PostgreSQL & pgAdmin          (http://localhost:${PGADMIN_PORT})"
     echo "  redis    Redis & RedisInsight          (http://localhost:${REDISINSIGHT_PORT})"
     echo "  mongo    MongoDB & Mongo Express       (http://localhost:${MONGO_EXPRESS_PORT})"
     echo "  kafka    Kafka and UI for Apache Kafka (http://localhost:${KAFKA_UI_PORT})"
