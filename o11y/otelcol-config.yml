@@ -22,8 +22,8 @@ service:
       level: "debug"
   pipelines:
     traces:
-      receivers: [jaeger]
-      exporters: [logging, jaeger]
+      receivers: [otlp, jaeger]
+      exporters: [logging]
     metrics:
-      receivers: [statsd]
+      receivers: [otlp, statsd]
       exporters: [logging, prometheus]
