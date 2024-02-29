@@ -8,6 +8,8 @@ services:
     ports:
     - ${JAEGER_PORT}:14268
     - ${STATSD_PORT}:8125/udp
+    - ${OTLP_GRPC_PORT}:4317
+    - ${OTLP_HTTP_PORT}:4318
 
   opencodeco-jaeger:
     container_name: opencodeco-jaeger
