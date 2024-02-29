@@ -15,6 +15,10 @@ exporters:
     verbosity: detailed
   prometheus:
     endpoint: 0.0.0.0:9090
+  otlp/jaeger:
+    endpoint: opencodeco-jaeger:4317
+    tls:
+      insecure: true
 
 service:
   telemetry:
@@ -23,7 +27,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp, jaeger]
-      exporters: [logging]
+      exporters: [logging, otlp/jaeger]
     metrics:
       receivers: [otlp, statsd]
       exporters: [logging, prometheus]
