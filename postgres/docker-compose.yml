@@ -1,0 +1,32 @@
+version: '3'
+services:
+  opencodeco-postgres:
+    container_name: opencodeco-postgres
+    image: postgres:latest
+    restart: always
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - opencodeco-postgres:/var/lib/postgresql/data
+
+  opencodeco-pgadmin:
+    container_name: opencodeco-pgadmin
+    image: dpage/pgadmin4:latest
+    ports:
+      - ${PGADMIN_PORT}:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    depends_on:
+      - opencodeco-postgres
+
+networks:
+  default:
+    name: opencodeco
+    external: true
+
+volumes:
+  opencodeco-postgres:
+    name: opencodeco-postgres
