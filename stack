@@ -32,13 +32,18 @@ if [ $# -eq 0 ] || [ "help" = "${1}" ]; then
     echo "  Prometheus: Metrics         (http://localhost:${PROMETHEUS_PORT})"
     echo "  Grafana Dashboards & Alerts (http://localhost:${GRAFANA_PORT})"
     echo ""
+    echo "Helpers:"
+    echo "  path    Show stack and project paths"
+    echo "  runtime Show container and compose runtime engines"
+    echo ""
 
     exit
 fi
 
 if [ "path" = "${1}" ]; then
-    echo "Stack path: ${STACK_PATH}"
-    echo "Project path: ${PROJECT_PATH}"
+    echo "Path"
+    echo -e "  Stack: \033[1;32m${STACK_PATH}\033[0m"
+    echo -e "  Project: \033[1;32m${PROJECT_PATH}\033[0m"
     exit
 fi
 
@@ -55,11 +60,22 @@ fi
 CONTAINER_COMPOSE=
 if command -v docker-compose > /dev/null 2>&1; then
     CONTAINER_COMPOSE=docker-compose
+elif docker compose --version > /dev/null 2>&1; then
+    CONTAINER_COMPOSE="docker compose"
 elif command -v podman-compose > /dev/null 2>&1; then
     CONTAINER_COMPOSE=podman-compose
+elif podman compose --version > /dev/null 2>&1; then
+    CONTAINER_COMPOSE="podman compose"
 else
     echo "Could not find neither \"docker-compose\" nor \"podman-compose\", aborting"
     exit 1
+fi
+
+if [ "runtime" = "${1}" ]; then
+    echo "Runtime"
+    echo -e "  Container: \033[1;32m${CONTAINER_BIN}\033[0m"
+    echo -e "  Compose: \033[1;32m${CONTAINER_COMPOSE}\033[0m"
+    exit
 fi
 
 if [ "ps" = "${1}" ] || [ "ls" = "${1}" ]; then
