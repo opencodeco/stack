@@ -1,6 +1,14 @@
-# Stack
+# `stack`
 
 🧱 Common infrastructure components in a single command.
+
+## Getting started
+
+### Installation
+
+```shell
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/opencodeco/stack/main/install.sh)"
+```
 
 ## Components
 
