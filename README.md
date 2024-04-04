@@ -12,6 +12,7 @@
 | `stack kafka` | Kafka and UI for Apache Kafka (http://localhost:8037) |
 | `stack rabbitmq` | RabbitMQ & Management Plugin (http://localhost:8038) |
 | `stack aws` | AWS services via LocalStack (http://localhost:4566) |
+| `stack hyperdx` | HyperDX local (http://localhost:8080) | 
 | `stack o11y` | OpenTelemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
 
 ### Observability (o11y)
