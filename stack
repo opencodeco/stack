@@ -21,6 +21,7 @@ if [ $# -eq 0 ] || [ "help" = "${1}" ]; then
     echo "  kafka    Kafka and UI for Apache Kafka (http://localhost:${KAFKA_UI_PORT})"
     echo "  rabbitmq RabbitMQ & Management Plugin  (http://localhost:${RABBITMQ_UI_PORT})"
     echo "  aws      AWS services via LocalStack   (http://localhost:${AWS_PORT})"
+    echo "  hyperdx  HyperDX local.                (http://localhost:${HYPERDX_APP_PORT})"
     echo "  o11y     OTel Collectors, Jaeger UI, Prometheus & Grafana"
     echo ""
     echo "Observability (o11y):"
