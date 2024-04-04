@@ -1,4 +1,3 @@
-version: '3'
 services:
   opencodeco-hyperx:
     container_name: opencodeco-hyperx

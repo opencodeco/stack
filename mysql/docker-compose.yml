@@ -1,4 +1,3 @@
-version: '3'
 services:
   opencodeco-mysql:
     container_name: opencodeco-mysql

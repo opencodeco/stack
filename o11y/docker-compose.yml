@@ -1,4 +1,3 @@
-version: '3'
 services:      
   opencodeco-otelcol:
     container_name: opencodeco-otelcol
