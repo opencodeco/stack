@@ -5,7 +5,8 @@ services:
     volumes:
     - ./otelcol-config.yml:/etc/otelcol-contrib/config.yaml
     ports:
-    - ${JAEGER_PORT}:14268
+    - ${JAEGER_HTTP_PORT}:14268
+    - ${JAEGER_UDP_PORT}:6832/udp
     - ${STATSD_PORT}:8125/udp
     - ${OTLP_GRPC_PORT}:4317
     - ${OTLP_HTTP_PORT}:4318
