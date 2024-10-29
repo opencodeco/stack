@@ -28,6 +28,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/opencodeco/stack/main/in
 | Component | Description | Port |
 | --- | --- | --- |
 | OpenTelemetry Collector | Jaeger HTTP | `14268` |
+| OpenTelemetry Collector | Jaeger UDP | `6832` |
 | OpenTelemetry Collector | Statsd UDP | `8125` |
 | OpenTelemetry Collector | OTLP gRPC | `4317` |
 | OpenTelemetry Collector | OTLP HTTP | `4318` |
