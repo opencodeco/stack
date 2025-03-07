@@ -1,0 +1,15 @@
+services:
+  opencodeco-hyperx:
+    container_name: opencodeco-hyperx
+    image: hyperdx/hyperdx-local
+    ports:
+      - ${HYPERDX_API_PORT}:8000
+      - ${HYPERDX_APP_PORT}:8080
+      - ${HYPERDX_GRPC_PORT}:4317
+      - ${HYPERDX_HTTP_PORT}:4318
+      - ${HYPERDX_LOG_PORT}:8002
+
+networks:
+  default:
+    name: opencodeco
+    external: true

@@ -1,17 +1,19 @@
-version: '3'
 services:      
   opencodeco-otelcol:
     container_name: opencodeco-otelcol
-    image: otel/opentelemetry-collector-contrib:0.82.0
+    image: otel/opentelemetry-collector-contrib:0.95.0
     volumes:
     - ./otelcol-config.yml:/etc/otelcol-contrib/config.yaml
     ports:
-    - ${JAEGER_PORT}:14268
+    - ${JAEGER_HTTP_PORT}:14268
+    - ${JAEGER_UDP_PORT}:6832/udp
     - ${STATSD_PORT}:8125/udp
+    - ${OTLP_GRPC_PORT}:4317
+    - ${OTLP_HTTP_PORT}:4318
 
   opencodeco-jaeger:
     container_name: opencodeco-jaeger
-    image: jaegertracing/all-in-one:1.47
+    image: jaegertracing/all-in-one:1.54
     ports:
     - ${JAEGER_UI_PORT}:16686
 

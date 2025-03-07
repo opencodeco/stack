@@ -1,6 +1,14 @@
-# Stack
+# `stack`
 
 🧱 Common infrastructure components in a single command.
+
+## Getting started
+
+### Installation
+
+```shell
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/opencodeco/stack/main/install.sh)"
+```
 
 ## Components
 
@@ -13,6 +21,7 @@
 | `stack kafka` | Kafka and UI for Apache Kafka (http://localhost:8037) |
 | `stack rabbitmq` | RabbitMQ & Management Plugin (http://localhost:8038) |
 | `stack aws` | AWS services via LocalStack (http://localhost:4566) |
+| `stack hyperdx` | HyperDX local (http://localhost:8080) | 
 | `stack o11y` | OpenTelemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
 
 ### Observability (o11y)
@@ -20,6 +29,7 @@
 | Component | Description | Port |
 | --- | --- | --- |
 | OpenTelemetry Collector | Jaeger HTTP | `14268` |
+| OpenTelemetry Collector | Jaeger UDP | `6832` |
 | OpenTelemetry Collector | Statsd UDP | `8125` |
 | OpenTelemetry Collector | OTLP gRPC | `4317` |
 | OpenTelemetry Collector | OTLP HTTP | `4318` |
