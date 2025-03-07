@@ -17,6 +17,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/opencodeco/stack/main/in
 | `stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
 | `stack redis` | Redis & RedisInsight (http://localhost:8032) |
 | `stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
+| `stack postgres` | PostgreSQL & pgAdmin (http://localhost:8034) |
 | `stack kafka` | Kafka and UI for Apache Kafka (http://localhost:8037) |
 | `stack rabbitmq` | RabbitMQ & Management Plugin (http://localhost:8038) |
 | `stack aws` | AWS services via LocalStack (http://localhost:4566) |
