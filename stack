@@ -59,8 +59,10 @@ if command -v docker-compose > /dev/null 2>&1; then
     CONTAINER_COMPOSE=docker-compose
 elif command -v podman-compose > /dev/null 2>&1; then
     CONTAINER_COMPOSE=podman-compose
+elif docker compose --help > /dev/null 2>&1; then
+    CONTAINER_COMPOSE="docker compose"
 else
-    echo "Could not find neither \"docker-compose\" nor \"podman-compose\", aborting"
+    echo "Could not find \"docker-compose\", \"podman-compose\" or \"docker compose\", aborting"
     exit 1
 fi
 
