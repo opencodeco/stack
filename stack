@@ -105,4 +105,10 @@ if [ ! -f "${COMPONENT}/docker-compose.yml" ]; then
 fi
 
 CMD="${@:2}"
-$CONTAINER_COMPOSE -f "${COMPONENT}/docker-compose.yml" ${CMD:-up -d}
+
+COMPOSE_FILES="-f ${COMPONENT}/docker-compose.yml"
+if [ -f "${COMPONENT}/docker-compose.override.yml" ]; then
+    COMPOSE_FILES="${COMPOSE_FILES} -f ${COMPONENT}/docker-compose.override.yml"
+fi
+
+$CONTAINER_COMPOSE $COMPOSE_FILES ${CMD:-up -d}
