@@ -9,7 +9,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
-      - opencodeco-postgres:/var/lib/postgresql/data
+      - opencodeco-postgres:/var/lib/postgresql
 
   opencodeco-pgadmin:
     container_name: opencodeco-pgadmin
