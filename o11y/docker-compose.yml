@@ -1,25 +1,23 @@
 services:      
   opencodeco-otelcol:
     container_name: opencodeco-otelcol
-    image: otel/opentelemetry-collector-contrib:0.95.0
+    image: otel/opentelemetry-collector-contrib:0.123.0
     volumes:
     - ./otelcol-config.yml:/etc/otelcol-contrib/config.yaml
     ports:
-    - ${JAEGER_HTTP_PORT}:14268
-    - ${JAEGER_UDP_PORT}:6832/udp
     - ${STATSD_PORT}:8125/udp
     - ${OTLP_GRPC_PORT}:4317
     - ${OTLP_HTTP_PORT}:4318
 
   opencodeco-jaeger:
     container_name: opencodeco-jaeger
-    image: jaegertracing/all-in-one:1.54
+    image: jaegertracing/all-in-one:1.76.0
     ports:
     - ${JAEGER_UI_PORT}:16686
 
   opencodeco-prometheus:
     container_name: opencodeco-prometheus
-    image: prom/prometheus:v2.46.0
+    image: prom/prometheus:v3.3.0
     volumes:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
@@ -27,7 +25,7 @@ services:
 
   opencodeco-grafana:
     container_name: opencodeco-grafana
-    image: grafana/grafana:10.0.3
+    image: grafana/grafana:11.6.0
     ports:
     - ${GRAFANA_PORT}:3000
     volumes:

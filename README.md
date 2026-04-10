@@ -17,7 +17,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/opencodeco/stack/main/in
 | `stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
 | `stack redis` | Redis & RedisInsight (http://localhost:8032) |
 | `stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
-| `stack postgres` | PostgreSQL & pgAdmin (http://localhost:8034) |
+| `stack postgres` | PostgreSQL & pgAdmin (http://localhost:8039) |
 | `stack kafka` | Kafka and UI for Apache Kafka (http://localhost:8037) |
 | `stack rabbitmq` | RabbitMQ & Management Plugin (http://localhost:8038) |
 | `stack aws` | AWS services via LocalStack _(legacy, [see details below](#aws-localstack-vs-ministack))_ (http://localhost:4566) |
@@ -29,8 +29,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/opencodeco/stack/main/in
 
 | Component | Description | Port |
 | --- | --- | --- |
-| OpenTelemetry Collector | Jaeger HTTP | `14268` |
-| OpenTelemetry Collector | Jaeger UDP | `6832` |
 | OpenTelemetry Collector | Statsd UDP | `8125` |
 | OpenTelemetry Collector | OTLP gRPC | `4317` |
 | OpenTelemetry Collector | OTLP HTTP | `4318` |
@@ -77,7 +75,7 @@ stack mysql up -d
 ```
 Which does a:
 ```shell
-docker-compose -d mysql/docker-compose.yml up -d
+docker-compose -f mysql/docker-compose.yml up -d
 ```
 Behind the scenes.
 
@@ -109,3 +107,5 @@ stack mysql logs -f
 ---
 
 ⚠️ **Remember:** this is suited for development environments only.
+
+> **Note on upgrades:** Major version upgrades for MySQL (8→9), MongoDB (6→8), and RabbitMQ (3→4) may require recreating volumes if you have existing data. Run `stack <component> down -v` to remove volumes before upgrading.
