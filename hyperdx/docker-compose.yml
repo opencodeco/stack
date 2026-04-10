@@ -1,7 +1,7 @@
 services:
   opencodeco-hyperx:
     container_name: opencodeco-hyperx
-    image: hyperdx/hyperdx-local
+    image: hyperdx/hyperdx-local:2.23.2
     ports:
       - ${HYPERDX_API_PORT}:8000
       - ${HYPERDX_APP_PORT}:8080

@@ -1,8 +1,4 @@
 receivers:
-  jaeger:
-    protocols:
-      thrift_http:
-      thrift_binary:
   statsd:
     endpoint: 0.0.0.0:8125
     is_monotonic_counter: true
@@ -27,7 +23,7 @@ service:
       level: "debug"
   pipelines:
     traces:
-      receivers: [otlp, jaeger]
+      receivers: [otlp]
       exporters: [debug, otlp/jaeger]
     metrics:
       receivers: [otlp, statsd]

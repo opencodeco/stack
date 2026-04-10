@@ -1,15 +1,20 @@
 services:
   opencodeco-redis:
     container_name: opencodeco-redis
-    image: redis:7.0
+    image: redis:7.4
     ports:
       - ${REDIS_PORT}:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   opencodeco-redisinsight:
     container_name: opencodeco-redisinsight
-    image: redislabs/redisinsight:1.14.0
+    image: redis/redisinsight:3.2.0
     ports:
-      - ${REDISINSIGHT_PORT}:8001
+      - ${REDISINSIGHT_PORT}:5540
       
 networks:
   default:
