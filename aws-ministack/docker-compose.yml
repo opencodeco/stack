@@ -1,0 +1,11 @@
+services:
+  opencodeco-aws-ministack:
+    container_name: opencodeco-aws-ministack
+    image: nahuelnucera/ministack:1.1.61
+    ports:
+      - ${AWS_MINISTACK_PORT}:4566
+
+networks:
+  default:
+    name: opencodeco
+    external: true

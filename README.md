@@ -20,7 +20,8 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/opencodeco/stack/main/in
 | `stack postgres` | PostgreSQL & pgAdmin (http://localhost:8034) |
 | `stack kafka` | Kafka and UI for Apache Kafka (http://localhost:8037) |
 | `stack rabbitmq` | RabbitMQ & Management Plugin (http://localhost:8038) |
-| `stack aws` | AWS services via LocalStack (http://localhost:4566) |
+| `stack aws` | AWS services via LocalStack _(legacy, [see details below](#aws-localstack-vs-ministack))_ (http://localhost:4566) |
+| `stack aws-ministack` | AWS services via MiniStack (http://localhost:4567) |
 | `stack hyperdx` | HyperDX local (http://localhost:8080) | 
 | `stack o11y` | OpenTelemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
 
@@ -91,6 +92,19 @@ Or:
 ```shell
 stack mysql logs -f
 ```
+
+---
+
+### AWS: LocalStack vs MiniStack
+
+| | `stack aws` (LocalStack) | `stack aws-ministack` (MiniStack) |
+| --- | --- | --- |
+| Free | ⚠️ Core services behind paid plan | ✅ Free forever (MIT) |
+| Account / API key | Required | Not required |
+| Telemetry | Yes | No |
+| Services | 30+ (many paid) | 30+ |
+
+> **`stack aws` (LocalStack) is considered legacy.** LocalStack moved most of its core services behind a paid subscription. `stack aws-ministack` using [MiniStack](https://ministack.org/) is the recommended free alternative — it is a drop-in replacement compatible with any AWS CLI or SDK tool via `--endpoint-url=http://localhost:4567`.
 
 ---
 
