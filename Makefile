@@ -9,3 +9,7 @@ install:
 	@echo "Creating network..."
 	@stack network
 	@echo "🧱 Installed. Happy hacking!"
+
+.PHONY: test
+test:
+	@bash $(STACK_PATH)/tests/run-all.sh
