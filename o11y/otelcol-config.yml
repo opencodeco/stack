@@ -12,7 +12,7 @@ receivers:
       http:
 
 exporters:
-  logging:
+  debug:
     verbosity: detailed
   prometheus:
     endpoint: 0.0.0.0:9090
@@ -28,7 +28,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp, jaeger]
-      exporters: [logging, otlp/jaeger]
+      exporters: [debug, otlp/jaeger]
     metrics:
       receivers: [otlp, statsd]
-      exporters: [logging, prometheus]
+      exporters: [debug, prometheus]
