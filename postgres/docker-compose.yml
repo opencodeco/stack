@@ -1,7 +1,8 @@
 services:
   opencodeco-postgres:
     container_name: opencodeco-postgres
-    image: postgres:17.4
+    build: .
+    image: opencodeco-postgres:17.4-pgvector
     restart: always
     ports:
       - ${POSTGRES_PORT}:5432

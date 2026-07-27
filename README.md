@@ -17,13 +17,15 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/opencodeco/stack/main/in
 | `stack mysql`| MySQL & phpMyAdmin (http://localhost:8031) |
 | `stack redis` | Redis & RedisInsight (http://localhost:8032) |
 | `stack mongo` | MongoDB & Mongo Express (http://localhost:8033) |
-| `stack postgres` | PostgreSQL & pgAdmin (http://localhost:8039) |
+| `stack postgres` | PostgreSQL with pgvector & pgAdmin (http://localhost:8039) |
 | `stack kafka` | Kafka and UI for Apache Kafka (http://localhost:8037) |
 | `stack rabbitmq` | RabbitMQ & Management Plugin (http://localhost:8038) |
 | `stack aws` | AWS services via LocalStack _(legacy, [see details below](#aws-localstack-vs-ministack))_ (http://localhost:4566) |
 | `stack aws-ministack` | AWS services via MiniStack (http://localhost:4567) |
 | `stack hyperdx` | HyperDX local (http://localhost:8080) | 
 | `stack o11y` | OpenTelemetry Collector, Jaeger UI, Prometheus & Grafana (see below) |
+
+`stack postgres` includes [pgvector](https://github.com/pgvector/pgvector). Enable it in each database where it is needed with `CREATE EXTENSION vector;`.
 
 ### Observability (o11y)
 

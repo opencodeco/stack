@@ -29,4 +29,13 @@ assert_contains "create table, insert, and select" "hello" "$result"
 db_list=$(docker exec opencodeco-postgres psql -U postgres -tAc "SELECT datname FROM pg_database;" 2>&1)
 assert_contains "default postgres database exists" "postgres" "$db_list"
 
+vector_result=$(docker exec opencodeco-postgres psql -v ON_ERROR_STOP=1 -U postgres -tAc "
+  CREATE EXTENSION IF NOT EXISTS vector;
+  CREATE TABLE stack_vector_test (id SERIAL PRIMARY KEY, embedding vector(3));
+  INSERT INTO stack_vector_test (embedding) VALUES ('[1,2,3]'), ('[4,5,6]');
+  SELECT id FROM stack_vector_test ORDER BY embedding <-> '[1,2,3]' LIMIT 1;
+  DROP TABLE stack_vector_test;
+" 2>&1)
+assert_eq "pgvector nearest-neighbor query" "1" "$vector_result"
+
 report
